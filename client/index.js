@@ -41,9 +41,16 @@ async function exec() {
     while (true) {
         var data = await getEmployeeData();
         var eligible = await isEligible(data)
-        if (await eligible.eligible) {
-            console.log(await grantVacation(data))
+        if(eligible){
+            if (eligible.eligible) {
+                console.log(await grantVacation(data))
+            }else{
+                console.log("Vacation not granted")
+            }
+        }else{
+            console.log("Data not valid")
         }
+       
     }
 }
 
